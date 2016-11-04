@@ -1,7 +1,5 @@
 module Spree
   class LineItemSerializer < BaseSerializer
-    embed :ids, include: true
-
     attributes  :id,
                 :quantity,
                 :price,

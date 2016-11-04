@@ -1,7 +1,5 @@
 module Spree
   class UserSerializer < BaseSerializer
-    embed :ids, include: true
-
     attributes  :id,
                 :email,
                 :remember_token,

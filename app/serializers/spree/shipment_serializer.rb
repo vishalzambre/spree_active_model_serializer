@@ -1,7 +1,5 @@
 module Spree
   class ShipmentSerializer < BaseSerializer
-    embed :ids, include: true
-
     attributes  :id,
                 :tracking,
                 :number,

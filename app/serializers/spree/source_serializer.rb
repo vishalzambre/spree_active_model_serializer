@@ -1,7 +1,5 @@
 module Spree
   class SourceSerializer < BaseSerializer
-    embed :ids, include: true
-
     attributes :id,
                :cc_type,
                :last_digits,

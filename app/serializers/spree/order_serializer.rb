@@ -1,7 +1,5 @@
 module Spree
   class OrderSerializer < BaseSerializer
-    embed :ids, include: true
-
     attributes  :id,
                 :number,
                 :item_total,

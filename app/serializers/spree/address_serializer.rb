@@ -1,7 +1,5 @@
 module Spree
   class AddressSerializer < BaseSerializer
-    embed :ids, include: true
-
     attributes  :id,
                 :firstname,
                 :lastname,
