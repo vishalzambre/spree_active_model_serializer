@@ -1,13 +1,13 @@
-SpreeActiveModelSerializer
+Spree API with Active Model Serializer
 ==========================
 
-Introduction goes here.
+Modified spree api response with [Active Model Serializer](https://github.com/rails-api/active_model_serializers)
 
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
   ```ruby
-  gem 'spree_active_model_serializer', github: 'vishalzambre/spree_active_model_serializer', branch: 'master'
+  gem 'spree_active_model_serializer', github: 'vishalzambre/spree_active_model_serializer', branch: '3-0-stable'
   ```
 
 2. Install the gem using Bundler:
@@ -47,4 +47,4 @@ If you'd like to contribute, please take a look at the
 [instructions](CONTRIBUTING.md) for installing dependencies and crafting a good
 pull request.
 
-Copyright (c) 2016 [name of extension creator], released under the New BSD License
+Copyright (c) 2016 [Vishal Zambre](https://github.com/vishalzambre), released under the New BSD License
