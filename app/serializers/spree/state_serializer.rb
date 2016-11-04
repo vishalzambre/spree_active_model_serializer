@@ -4,7 +4,7 @@ module Spree
                 :name,
                 :abbr
 
-    has_one :country, include: false
+    has_one :country, embed: :ids
 
   end
 end

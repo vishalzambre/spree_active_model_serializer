@@ -9,6 +9,6 @@ module Spree
                 :insufficient_stock?
 
     has_one :variant
-    has_one :order, embed_key: :number, serializer: LineItemOrderSerializer
+    has_one :order, embed: :number, serializer: LineItemOrderSerializer
   end
 end
