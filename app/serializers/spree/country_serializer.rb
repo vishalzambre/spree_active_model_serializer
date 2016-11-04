@@ -1,6 +1,6 @@
 module Spree
   class CountrySerializer < BaseSerializer
-    # embed :ids, include: true
+    embed :ids, include: true
 
     attributes  :id,
                 :iso_name,

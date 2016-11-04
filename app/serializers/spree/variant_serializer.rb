@@ -1,6 +1,6 @@
 module Spree
   class VariantSerializer < BaseSerializer
-    # embed :ids, include: true
+    embed :ids, include: true
 
     attributes  :id,
                 :name,

@@ -1,6 +1,6 @@
 module Spree
   class OrderSerializer < BaseSerializer
-    # embed :ids, include: true
+    embed :ids, include: true
 
     attributes  :id,
                 :number,
@@ -46,6 +46,6 @@ module Spree
     has_one :bill_address, root: :addresses
     has_one :ship_address, root: :addresses
 
-    # has_one :user
+    has_one :user
   end
 end

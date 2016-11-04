@@ -1,6 +1,6 @@
 module Spree
   class PaymentSerializer < BaseSerializer
-    # embed :ids, include: true
+    embed :ids, include: true
 
     attributes :id,
                :state
