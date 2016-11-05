@@ -6,5 +6,7 @@ module Spree
                :permalink,
                :parent_id,
                :taxonomy_id
+
+    has_many :children, root: :taxons, serializer: TaxonSerializer
   end
 end
