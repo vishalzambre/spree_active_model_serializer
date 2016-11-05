@@ -4,12 +4,12 @@ module Spree
 
       def meta_for(object)
         meta = {}
-        if object.respond_to?('total_count')
+        if object.respond_to?('total_pages')
           meta[:count] = object.count
           meta[:total_count]  = object.total_count
           meta[:current_page] = params[:page] ? params[:page].to_i : 1
           meta[:per_page] = params[:per_page] || Kaminari.config.default_per_page
-          meta[:pages] = object.num_pages
+          meta[:pages] = object.total_pages
         end
         meta
       end
