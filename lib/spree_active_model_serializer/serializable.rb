@@ -20,7 +20,7 @@ module Spree
           return
         end
 
-        render json: object, meta: meta_for(object), status: options[:status]
+        render json: object, pagination: meta_for(object), status: options[:status]
       end
     end
   end
