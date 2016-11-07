@@ -1,12 +1,9 @@
 module Spree
   class ShippingRateSerializer < BaseSerializer
-    attributes  :id,
-                :name,
-                :cost,
-                :selected,
-                :display_cost
+    attributes  :id, :name, :cost, :selected, :shipping_method_id, :shipping_method_code
 
-    has_one :shipping_method, serializer: ShippingMethodSerializer
-
+    def display_cost
+      object.display_cost.to_s
+    end
   end
 end

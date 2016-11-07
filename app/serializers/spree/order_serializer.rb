@@ -1,49 +1,35 @@
 module Spree
   class OrderSerializer < BaseSerializer
-    attributes  :id,
-                :number,
-                :item_total,
-                :total,
-                :state,
-                :adjustment_total,
-                :user_id,
-                :completed_at,
-                :ship_address_id,
-                :payment_total,
-                :shipping_method_id,
-                :shipment_state,
-                :payment_state,
-                :email,
-                :special_instructions,
-                :created_at,
-                :updated_at,
-                :currency,
-                :last_ip_address,
-                :created_by_id,
-                :shipment_total,
-                :additional_tax_total,
-                :promo_total,
-                :channel,
-                :included_tax_total,
-                :item_count,
-                :approver_id,
-                :approved_at,
-                :confirmation_delivered,
-                :considered_risky,
-                :guest_token,
-                :checkout_steps
+    attributes *@@order_attributes
+    attributes :display_item_total, :total_quantity, :display_total,
+               :display_ship_total, :display_tax_total, :token, :checkout_steps
 
-    def id
-      object.number
+    def display_item_total
+      object.display_item_total.to_s
     end
 
-    has_many :shipments
-    has_many :available_payment_methods, serializer: PaymentMethodSerializer, root: :payment_methods
-    has_many :payments
-    has_many :line_items
-    has_one :bill_address, root: :addresses
-    has_one :ship_address, root: :addresses
+    def total_quantity
+      object.line_items.sum(:quantity)
+    end
 
-    has_one :user
+    def display_total
+      object.display_total.to_s
+    end
+
+    def display_ship_total
+      object.display_ship_total
+    end
+
+    def display_tax_total
+      object.display_tax_total
+    end
+
+    def token
+      object.guest_token
+    end
+
+    def checkout_steps
+      object.checkout_steps
+    end
   end
 end

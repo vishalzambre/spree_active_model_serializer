@@ -1,18 +1,14 @@
 module Spree
   class AddressSerializer < BaseSerializer
-    attributes  :id,
-                :firstname,
-                :lastname,
-                :address1,
-                :address2,
-                :city,
-                :zipcode,
-                :phone,
-                :state_name,
-                :alternative_phone,
-                :company
+    attributes *@@address_attributes
+    attributes :state, :country
 
-    has_one :state, serializer: StateSerializer
-    has_one :country, serializer: CountrySerializer
+    def state
+      StateSerializer.new(object.state).attributes
+    end
+
+    def country
+      CountrySerializer.new(object.country).attributes
+    end
   end
 end

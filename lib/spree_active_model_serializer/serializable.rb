@@ -19,8 +19,9 @@ module Spree
           render json: { errors: object.errors.to_hash }, status: options[:status]
           return
         end
-
-        render json: object, pagination: meta_for(object), status: options[:status]
+        serializer = {}
+        serializer = { serializer: options[:serializer] } if options[:serializer]
+        render({ json: object, pagination: meta_for(object), status: options[:status] }.merge(serializer))
       end
     end
   end

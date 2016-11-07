@@ -1,12 +1,11 @@
 module Spree
-  class VariantSerializer < BaseSerializer
+  class VariantSmallSerializer < BaseSerializer
     attributes *@@variant_attributes
     attributes :display_price, :options_text, :track_inventory, :in_stock,
-               :is_backorderable, :total_on_hand, :is_destroyed
+               :is_backorderable, :total_on_hand, :is_destroyed, :product_id
 
-    has_many :option_values, root: :option_values, serializer: OptionValuesSerializer
     has_many :images, serializer: ImageSerializer
-    has_many :stock_items, serializer: StockItemVariantSerializer
+    has_many :option_values, root: :option_values, serializer: OptionValuesSerializer
 
     def track_inventory
       object.should_track_inventory?

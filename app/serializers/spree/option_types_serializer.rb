@@ -1,6 +1,7 @@
 module Spree
   class OptionTypesSerializer < BaseSerializer
-    attributes :id, :name, :presentation, :position
+    attributes *@@option_type_attributes
+
     has_many :option_values, root: :option_values, serializer: OptionValuesSerializer
   end
 end

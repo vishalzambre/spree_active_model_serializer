@@ -1,10 +1,7 @@
 module Spree
   class StateSerializer < BaseSerializer
-    attributes  :id,
-                :name,
-                :abbr
+    attributes  *@@state_attributes
 
     has_one :country, embed: :ids
-
   end
 end
