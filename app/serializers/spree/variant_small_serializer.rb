@@ -5,7 +5,7 @@ module Spree
                :is_backorderable, :total_on_hand, :is_destroyed, :product_id
 
     has_many :images, serializer: ImageSerializer
-    has_many :option_values, root: :option_values, serializer: OptionValuesSerializer
+    has_many :option_values, root: :option_values, serializer: OptionValueSerializer
 
     def track_inventory
       object.should_track_inventory?

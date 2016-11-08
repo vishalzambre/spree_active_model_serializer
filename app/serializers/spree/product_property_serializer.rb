@@ -1,5 +1,5 @@
 module Spree
-  class ProductPropertiesSerializer < BaseSerializer
+  class ProductPropertySerializer < BaseSerializer
     attributes *@@product_property_attributes
   end
 end

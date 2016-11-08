@@ -4,7 +4,7 @@ module Spree
     attributes :display_price, :options_text, :track_inventory, :in_stock,
                :is_backorderable, :total_on_hand, :is_destroyed
 
-    has_many :option_values, root: :option_values, serializer: OptionValuesSerializer
+    has_many :option_values, root: :option_values, serializer: OptionValueSerializer
     has_many :images, serializer: ImageSerializer
     has_many :stock_items, serializer: StockItemVariantSerializer
 

@@ -26,18 +26,8 @@ module ActiveModel
   Serializer.class_eval do
     # Returns a json representation of the serializable
     # object including the root.
-    def as_json(options={})
-      options ||= {}
-      if root = options.fetch(:root, @options.fetch(:root, root_name))
-        @options[:hash] = hash = {}
-        @options[:unique_values] = {}
-
-        hash[root] = serializable_hash
-        include_meta hash
-        hash.as_json
-      else
-        serializable_hash.as_json
-      end
+    def as_json(options = {})
+      serializable_hash.as_json
     end
   end
 end
