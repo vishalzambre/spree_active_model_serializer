@@ -18,9 +18,11 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core', '~> 3.0.9'
+  s.add_dependency 'spree_api', '~> 3.0.9'
   s.add_dependency 'active_model_serializers', '~> 0.8.2'
 
   s.add_development_dependency 'capybara', '~> 2.6'
+  s.add_development_dependency 'rspec'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_girl', '~> 4.5'

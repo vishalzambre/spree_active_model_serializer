@@ -1,6 +1,6 @@
 module Spree
   class AddressSerializer < BaseSerializer
-    attributes *@@address_attributes
+    attributes *_helper.address_attributes
     attributes :state, :country
 
     def state

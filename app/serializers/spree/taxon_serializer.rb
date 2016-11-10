@@ -1,7 +1,13 @@
 module Spree
   class TaxonSerializer < BaseSerializer
-    attributes *@@taxon_attributes
+    attributes *_helper.taxon_attributes
+    attributes :taxons
 
-    has_many :children, root: :taxons, serializer: TaxonSerializer
+    def taxons
+      return if options['without_children']
+      object.children.map do |taxon|
+        TaxonNestedChildrenSerializer.new(taxon)
+      end
+    end
   end
 end

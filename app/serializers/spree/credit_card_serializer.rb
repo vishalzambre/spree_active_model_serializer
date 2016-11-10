@@ -1,5 +1,5 @@
 module Spree
   class CreditCardSerializer < BaseSerializer
-    attributes *@@creditcard_attributes
+    attributes *_helper.creditcard_attributes
   end
 end

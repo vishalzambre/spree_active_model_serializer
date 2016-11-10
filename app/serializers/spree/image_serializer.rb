@@ -1,6 +1,6 @@
 module Spree
   class ImageSerializer < BaseSerializer
-    attributes  *@@image_attributes
+    attributes  *_helper.image_attributes
     attributes :viewable_type, :viewable_id
 
     Spree::Image.attachment_definitions[:attachment][:styles].each do |k,v|

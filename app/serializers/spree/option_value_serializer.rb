@@ -1,5 +1,5 @@
 module Spree
   class OptionValueSerializer < BaseSerializer
-    attributes *@@option_value_attributes
+    attributes *_helper.option_value_attributes
   end
 end

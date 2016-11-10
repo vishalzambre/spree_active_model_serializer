@@ -1,5 +1,5 @@
 module Spree
-  class ShipmentSerializer < BaseSerializer
+  class ShipmentSmallSerializer < BaseSerializer
     attributes *_helper.shipment_attributes
     attributes :order_id, :stock_location_name, :manifest
 
@@ -14,7 +14,7 @@ module Spree
     def manifest
       object.manifest.map do |manifest|
         {
-          variant: VariantSmallSerializer.new(manifest.variant),
+          variant_id: manifest.variant.id,
           quantity: manifest.quantity,
           states: manifest.states
         }
@@ -24,5 +24,6 @@ module Spree
     has_many :shipping_rates, serializer: ShippingRateSerializer
     has_one :selected_shipping_rate, serializer: ShippingRateSerializer
     has_many :shipping_methods
+    has_many :adjustments, serializer: AdjustmentSerializer
   end
 end

@@ -1,14 +1,14 @@
 module Spree
   class OrderShowSerializer < OrderSerializer
-    attributes *@@order_attributes
+    attributes *_helper.order_attributes
     attributes :valid_credit_cards
 
-    has_one :billing_address, root: :billing_address, serializer: AddressSerializer
-    has_one :shipping_address, root: :shipping_address, serializer: AddressSerializer
-    has_many :line_items, root: :line_items, serializer: LineItemSerializer
-    has_many :payments, root: :payments, serializer: PaymentSerializer
-    has_many :shipments, root: :payments, serializer: ShipmentSerializer
-    has_many :adjustments
+    has_one :billing_address, key: :bill_address, serializer: AddressSerializer
+    has_one :shipping_address, key: :ship_address, serializer: AddressSerializer
+    has_many :line_items, key: :line_items, serializer: LineItemSerializer
+    has_many :payments, key: :payments, serializer: OrderPaymentSerializer
+    has_many :shipments, key: :shipments, serializer: ShipmentSmallSerializer
+    has_many :adjustments, serializer: AdjustmentSerializer
 
     def valid_credit_cards
       object.valid_credit_cards.map do |credit_card|

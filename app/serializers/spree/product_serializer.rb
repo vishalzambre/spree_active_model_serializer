@@ -1,11 +1,11 @@
 module Spree
   class ProductSerializer < BaseSerializer
-    attributes *@@product_attributes
+    attributes *_helper.product_attributes
     attributes :has_variants
 
-    has_one :master, root: :master, serializer: VariantSmallSerializer
-    has_many :variants, root: :variants, serializer: VariantSmallSerializer
-    has_many :option_types, root: :option_types, serializer: OptionTypeSerializer
+    has_one :master, key: :master, serializer: VariantSmallSerializer
+    has_many :variants, key: :variants, serializer: VariantSmallSerializer
+    has_many :option_types, key: :option_types, serializer: OptionTypeSerializer
     has_many :product_properties, serializer: ProductPropertySerializer
     has_many :classifications
 

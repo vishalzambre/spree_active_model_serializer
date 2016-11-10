@@ -15,13 +15,8 @@ module Spree
       end
 
       def respond_with(object = nil, options = {})
-        if object.try(:errors).present?
-          render json: { errors: object.errors.to_hash }, status: options[:status]
-          return
-        end
-        serializer = {}
-        serializer = { serializer: options[:serializer] } if options[:serializer]
-        render({ json: object, pagination: meta_for(object), status: options[:status] }.merge(serializer))
+        options.merge!(params)
+        render({ json: object, pagination: meta_for(object) }.merge(options))
       end
     end
   end

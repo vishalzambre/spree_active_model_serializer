@@ -1,5 +1,5 @@
 module Spree
   class SourceSerializer < BaseSerializer
-    attributes *@@payment_source_attributes
+    attributes *_helper.payment_source_attributes
   end
 end

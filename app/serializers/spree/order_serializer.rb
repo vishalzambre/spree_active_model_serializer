@@ -1,6 +1,6 @@
 module Spree
   class OrderSerializer < BaseSerializer
-    attributes *@@order_attributes
+    attributes *_helper.order_attributes
     attributes :display_item_total, :total_quantity, :display_total,
                :display_ship_total, :display_tax_total, :token, :checkout_steps
 

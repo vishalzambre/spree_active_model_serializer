@@ -1,18 +1,6 @@
 module Spree
   class TaxonomySerializer < BaseSerializer
-    attributes :id,
-               :name,
-               :permalink,
-               :pretty_name
-
-    def permalink
-      object.root.permalink
-    end
-
-    def pretty_name
-      object.root.pretty_name
-    end
-
-    has_many :taxons
+    attributes *_helper.taxonomy_attributes
+    has_one :root, key: :root, serializer: TaxonomyTaxonSerializer
   end
 end

@@ -5,16 +5,28 @@ module Spree
         load_order(true)
         authorize! :update, @order, order_token
         @order.next!
-        respond_with(@order, default_template: 'spree/api/orders/show', status: 200, serializer: Spree::OrderShowSerializer)
+        respond_with(
+          @order,
+          default_template: 'spree/api/orders/show',
+          status: 200, serializer: Spree::OrderShowSerializer
+        )
       rescue StateMachines::InvalidTransition
-        respond_with(@order, default_template: 'spree/api/orders/could_not_transition', status: 422, serializer: OrderCouldNotTransitionSerializer)
+        respond_with(
+          @order,
+          default_template: 'spree/api/orders/could_not_transition',
+          status: 422, serializer: Spree::OrderCouldNotTransitionSerializer
+        )
       end
 
       def advance
         load_order(true)
         authorize! :update, @order, order_token
         while @order.next; end
-        respond_with(@order, default_template: 'spree/api/orders/show', status: 200, serializer: Spree::OrderShowSerializer)
+        respond_with(
+          @order,
+          default_template: 'spree/api/orders/show',
+          status: 200, serializer: Spree::OrderShowSerializer
+        )
       end
 
       def update
@@ -30,9 +42,17 @@ module Spree
 
           if @order.completed? || @order.next
             state_callback(:after)
-            respond_with(@order, default_template: 'spree/api/orders/show', serializer: Spree::OrderShowSerializer)
+            respond_with(
+              @order,
+              default_template: 'spree/api/orders/show',
+              status: 200, serializer: Spree::OrderShowSerializer
+            )
           else
-            respond_with(@order, default_template: 'spree/api/orders/could_not_transition', status: 422, serializer: OrderCouldNotTransitionSerializer)
+            respond_with(
+              @order,
+              default_template: 'spree/api/orders/could_not_transition',
+              status: 422, serializer: Spree::OrderCouldNotTransitionSerializer
+            )
           end
         else
           invalid_resource!(@order)
@@ -42,7 +62,11 @@ module Spree
       private
 
       def raise_insufficient_quantity
-        respond_with(@order, default_template: 'spree/api/orders/insufficient_quantity', serializer: OrderInsufficientQuantitySerializer)
+        respond_with(
+          @order,
+          default_template: 'spree/api/orders/insufficient_quantity',
+          serializer: Spree::OrderInsufficientQuantitySerializer
+        )
       end
 
       def after_update_attributes
@@ -51,7 +75,11 @@ module Spree
 
           if handler.error.present?
             @coupon_message = handler.error
-            respond_with(@order, default_template: 'spree/api/orders/could_not_apply_coupon', serializer: OrderCouldNotAppluCouponSerializer)
+            respond_with(
+              @order,
+              default_template: 'spree/api/orders/could_not_apply_coupon',
+              serializer: Spree::OrderCouldNotAppluCouponSerializer
+            )
             return true
           end
         end
