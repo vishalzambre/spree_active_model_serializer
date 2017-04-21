@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_active_model_serializer'
-  s.version     = '3.1.5'
+  s.version     = '3.2.1'
   s.summary     = 'Spree API with Active Model Serializer'
   s.description = 'Spree API with Active Model Serializer'
   s.required_ruby_version = '>= 2.1.0'
@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 3.1.5'
-  s.add_dependency 'spree_api', '~> 3.1.5'
+  s.add_dependency 'spree_core', '~> 3.2.1'
+  s.add_dependency 'spree_api', '~> 3.2.1'
   s.add_dependency 'active_model_serializers', '~> 0.10.5'
 
   s.add_development_dependency 'capybara', '~> 2.6'
