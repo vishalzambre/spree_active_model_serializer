@@ -14,9 +14,21 @@ module Spree
         meta
       end
 
+      def modify_options(object, options)
+        if object.is_a?(ActiveRecord::Relation)
+          options[:root] = object.name.underscore.split('/')[-1].to_s.pluralize unless options[:root]
+          options[:include_root] = true
+        elsif object.is_a?(ActiveRecord::Base)
+          options[:root] = object.class.model_name.to_s.underscore.split('/')[-1].to_s
+          options[:include_root] = !!options[:include_root]
+        end
+        options.merge(pagination: meta_for(object), json: object)
+      end
+
       def respond_with(object = nil, options = {})
         options.merge!(params)
-        render({ json: object, pagination: meta_for(object) }.merge(options))
+        options = modify_options(object, options)
+        render options
       end
     end
   end

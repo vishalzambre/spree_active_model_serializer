@@ -1,13 +1,13 @@
 Spree API with Active Model Serializer
 ==========================
 
-Modified spree api response with [Active Model Serializer](https://github.com/rails-api/active_model_serializers)
+Modified spree api response with [Active Model Serializer](https://github.com/rails-api/active_model_serializers/tree/v0.10.5)
 
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
   ```ruby
-  gem 'spree_active_model_serializer', github: 'vishalzambre/spree_active_model_serializer', branch: '3-0-stable'
+  gem 'spree_active_model_serializer', github: 'vishalzambre/spree_active_model_serializer', branch: '3-1-stable'
   ```
 
 2. Install the gem using Bundler:
@@ -40,6 +40,14 @@ Simply add this require statement to your spec_helper:
 require 'spree_active_model_serializer/factories'
 ```
 
+NOTE: If you want to change adapter to [json_api](http://jsonapi.org/) add following line to `intializers/spree.rb`
+current adapter is modified to support spree existing API responses.
+
+```ruby
+  ActiveModelSerializers.config.adapter = :json_api
+```
+
+In this active_model_serializers `0.10.5` version is used.
 
 ## Contributing
 

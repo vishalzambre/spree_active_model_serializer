@@ -18,5 +18,6 @@ module SpreeActiveModelSerializer
     config.autoload_paths << File.expand_path('../../app/**/*.rb', __FILE__)
 
     config.to_prepare &method(:activate).to_proc
+    ActiveModelSerializers.config.adapter = ActiveModelSerializers::Adapter::SpreeAms
   end
 end
